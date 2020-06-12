@@ -21,6 +21,8 @@ HOME_URL="https://getsol.us"
 SUPPORT_URL="https://getsol.us/articles/contributing/getting-involved/en/"
 BUG_REPORT_URL="https://dev.getsol.us/"
 
+
+
 LSB Version:    1.4
 Distributor ID: Solus
 Description:    Solus

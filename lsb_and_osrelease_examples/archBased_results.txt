@@ -16,6 +16,7 @@ Description: Manjaro Linux
 Reelease: 18.0.4
 Codename: Illyria
 
+##########################
 os-release file
 
 NAME: "Manjaro Linux" (with quotes)
@@ -24,6 +25,9 @@ ID_LIKE: arch
 Pretty Name: (w/ double quotes like Name) "Manjaro Linux"
 
 
+
+#####################################################
+######################################################
 
 Anarchy (formerly Arch Anywhere)
 

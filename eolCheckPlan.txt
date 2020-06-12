@@ -1,0 +1,5 @@
+# Plan for EOL
+
+forget LSBCodeName ... in fact even though the scripts install lsb packages if needed, forget lsb ... focus on how i can use os-release
+
+VERSION_ID maybe worth doing
