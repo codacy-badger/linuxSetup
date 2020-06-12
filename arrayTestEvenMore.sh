@@ -30,10 +30,14 @@ declare -A currentUbuntu=(
 
 ## OpenSuse Testing atm
 
-OSRELEASE_VERSION_ID="15.0"
+OSRELEASE_VERSION_ID="15.1"
 #####################################
 
 clear
+
+
+## ?? how do i determine what array to use ?
+	## Before i'd use this ... is distroName known?
 
 echo -e "currentOpenSUSE[$OSRELEASE_VERSION_ID]"
 echo
@@ -42,11 +46,11 @@ echo
 #if relealsbCodeNameseIAmOn is in the array
 if [ -v "currentOpenSUSE[$OSRELEASE_VERSION_ID]" ]; then
 
-	echo -e "${currentOpenSUSE[$OSRELEASE_VERSION_ID]}"
-	echo
+	EOL=${currentOpenSUSE[$OSRELEASE_VERSION_ID]}
+
     echo "You are on a current release of openSuse"
     echo
-    echo -e "The end of life/support for your release is: ${currentOpenSUSE[$OSRELEASE_VERSION_ID]}"
+    echo -e "The end of life/support for your release is: $EOL"
 
 else
     echo "You are NOT on a current release of openSUSE"
