@@ -20,17 +20,18 @@ declare -A currentOpenSUSE=(
 
 ## Idea: use "End of Standard Support" and not "End of Life" listed on https://wiki.ubuntu.com/Releases
 declare -A currentUbuntu=(
-    [xenial]="April 2021"         # 16.04
-    [bionic]="April 2023"         # 18.04
-    [focal]="April 2025"          # 20.04
+    [16.04]="April 2021"         # 16.04
+    [18.04]="April 2023"         # 18.04
+    [20.04]="April 2025"          # 20.04
  )
 
 
 #lsbCodeName="$(lsb_release -sc)"
 
-## OpenSuse Testing atm
+## Ubuntu Testing atm
+removeDQuotes='tr -d \" '
 
-OSRELEASE_VERSIONID="15.1"
+OSRELEASE_VERSIONID=$(awk -F= '/^VERSION_ID=/ { print $2 }' /etc/os-release | $removeDQuotes )
 #####################################
 
 clear
@@ -39,19 +40,19 @@ clear
 ## ?? how do i determine what array to use ?
 	## Before i'd use this ... is distroName known?
 
-echo -e "currentOpenSUSE[$OSRELEASE_VERSIONID]"
+echo -e "currentUbuntu[$OSRELEASE_VERSIONID]"
 echo
 
 
 #if relealsbCodeNameseIAmOn is in the array
-if [ -v "currentOpenSUSE[$OSRELEASE_VERSIONID]" ]; then
+if [[ -v "currentUbuntu[$OSRELEASE_VERSIONID]" ]]; then
 
-	EOL=${currentOpenSUSE[$OSRELEASE_VERSIONID]}
+	EOL=${currentUbuntu[$OSRELEASE_VERSIONID]}
 
-    echo "You are on a current release of openSuse"
+    echo "You are on a current release of Ubuntu"
     echo
     echo -e "The end of life/support for your release is: $EOL"
 
 else
-    echo "You are NOT on a current release of openSUSE"
+    echo "You are NOT on a current release of Ubuntu"
 fi
