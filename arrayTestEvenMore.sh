@@ -31,28 +31,45 @@ declare -A currentUbuntu=(
 ## Ubuntu Testing atm
 removeDQuotes='tr -d \" '
 
-OSRELEASE_VERSIONID=$(awk -F= '/^VERSION_ID=/ { print $2 }' /etc/os-release | $removeDQuotes )
+OSRELEASE_VERSIONID=$(awk -F= '/^VERSION_ID=/ { print $2 }' /etc/os-release | $removeDQuotes ) this
+
+arrayName="currentUbuntu"
+currentArray=$arrayName[@]
 #####################################
+testArray=${currentUbuntu[@]}
+
 
 clear
+echo -e "${testArray[@]}"
+read -p "Press to continue"
 
 
-## ?? how do i determine what array to use ?
-	## Before i'd use this ... is distroName known?
-
-echo -e "currentUbuntu[$OSRELEASE_VERSIONID]"
-echo
 
 
-#if relealsbCodeNameseIAmOn is in the array
-if [[ -v "currentUbuntu[$OSRELEASE_VERSIONID]" ]]; then
 
-	EOL=${currentUbuntu[$OSRELEASE_VERSIONID]}
+echo -e "arrayName: $arrayName"
+echo -e "currentArray[@]: ${currentArray[@]}"
+read -p "Press to continue"
 
-    echo "You are on a current release of Ubuntu"
-    echo
-    echo -e "The end of life/support for your release is: $EOL"
+# for testing 
+foobarVar=$OSRELEASE_VERSIONID
+foobarVar="12.04"
 
-else
-    echo "You are NOT on a current release of Ubuntu"
-fi
+
+
+
+
+
+function usingTest()
+{
+    if test "${$currentArray[$foobarVar]+isset}"
+        then
+            echo -e "Passed"
+
+        else 
+            echo -e "Failed"
+
+    fi; 
+ }
+
+ #usingTest 
