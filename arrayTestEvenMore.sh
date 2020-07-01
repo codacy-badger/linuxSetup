@@ -2,8 +2,6 @@
 
 # idea: do not put beta releases or pre-releases here
 
-# just an idea to put EOL info in here
-
 # https://en.wikipedia.org/wiki/Fedora_version_history
 declare -A currentFedora=(
     [31]="Not known"
@@ -25,51 +23,64 @@ declare -A currentUbuntu=(
     [20.04]="April 2025"          # 20.04
  )
 
+function prompt()
+{
+    echo
+    read -p "Press to continue"
+}
 
-#lsbCodeName="$(lsb_release -sc)"
+function declareVars()
+{
 
-## Ubuntu Testing atm
-removeDQuotes='tr -d \" '
+    #lsbCodeName="$(lsb_release -sc)"
 
-OSRELEASE_VERSIONID=$(awk -F= '/^VERSION_ID=/ { print $2 }' /etc/os-release | $removeDQuotes ) this
+    removeDQuotes='tr -d \" '
+    OSRELEASE_VERSIONID=$(awk -F= '/^VERSION_ID=/ { print $2 }' /etc/os-release | $removeDQuotes )
 
-arrayName="currentUbuntu"
-currentArray=$arrayName[@]
-#####################################
-testArray=${currentUbuntu[@]}
+    arrayName="currentUbuntu"
+    #####################################
 
+}
 
-clear
-echo -e "${testArray[@]}"
-read -p "Press to continue"
+declareVars
 
 
+######################################################
+######################################################
 
-
-
-echo -e "arrayName: $arrayName"
-echo -e "currentArray[@]: ${currentArray[@]}"
-read -p "Press to continue"
-
-# for testing 
+# for testing
 foobarVar=$OSRELEASE_VERSIONID
 foobarVar="12.04"
 
 
 
+function arrayTesting(){
+
+	for indexes in ${currentUbuntu[*]}
+	do
+		echo ${$currentUbuntu[indexes]}
+	done
+
+}
+
+arrayTesting
 
 
+##################################################
 
 function usingTest()
 {
-    if test "${$currentArray[$foobarVar]+isset}"
+
+	if test "${currentArray['$foobarVar']+isset}"
         then
             echo -e "Passed"
 
-        else 
+        else
             echo -e "Failed"
 
-    fi; 
+    fi;
+
+	echo -e "${currentArray[$foobarVar]}"
  }
 
- #usingTest 
+#usingTest
